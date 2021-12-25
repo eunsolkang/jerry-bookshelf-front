@@ -1,7 +1,7 @@
 # 독서하는 제리 프로젝트 
 >시작일 : 2021-9-30 (목)
 
-[Live Demo](http://jerrykang.com)
+[Live Demo](http://book.jerrykang.com)
 
 ### :book: 독서의 중요성
 군대를 나갈 때까지 꽤 많은 권 수의 책을 읽을 수 있을 것 같다. 훈련소부터 이등병을 포함해서 약 7권의 책을 읽었다.
