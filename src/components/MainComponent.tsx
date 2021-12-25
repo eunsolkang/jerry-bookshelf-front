@@ -3,17 +3,13 @@ import styled from 'styled-components';
 import useBook from '../hooks/useBook';
 import Popup from './Popup';
 
-type bookType = {
-    name: string;
-    imgUrl: string;
-    backgroundColor: string;
-}
-
 const StyledMain = styled.div`
     height: calc(100vh - 80px);
     overflow-y: scroll;
     padding-top: 80px;
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
     display: flex;
     flex-direction: column;
     padding-right: -100px;
@@ -51,8 +47,16 @@ const StyledMain = styled.div`
     }
 `
 
-const StyledBook = styled.div< { backgroundColor : string, focusBook: number, index: number} >`
-    background-color: ${props => props.backgroundColor || 'white'};
+const StyledBook = styled.div< { backgroundColor : string | string[], focusBook: number, index: number} >`
+    background: ${props => {
+        console.log(props.backgroundColor)
+        if ( typeof props.backgroundColor === 'string'){
+            return props.backgroundColor;
+        }
+        else{
+            return 'linear-gradient( 45deg, #5f83c3, #a82676 )'
+        }
+    }};
     cursor: pointer;
     margin: 1rem;
     width: 20rem;
@@ -154,89 +158,17 @@ const StyledBook = styled.div< { backgroundColor : string, focusBook: number, in
 `
 
 const MainComponent = ({search}: any) => {
-    const {focusBook, onOpenBook} = useBook();
-    const [previousColor, setPreviousColor] = useState<string>('white');
-    const books: bookType[] = [
-        {
-            backgroundColor: '#bacaca',
-            name: '부자아빠와 가난한 아빠',
-            imgUrl: 'http://image.kyobobook.co.kr/images/book/xlarge/591/x9791158883591.jpg',
-        },
-        {
-            backgroundColor: '#f4a9ae',
-            name: '일의 기쁨과 슬픔',
-            imgUrl: 'http://image.yes24.com/goods/80742923/XL',
-        },
-        {
-            backgroundColor: '#6c4e2c',
-            name: '소년과 개',
-            imgUrl: 'http://image.yes24.com/goods/97155934/XL',
-        },
-        {
-            backgroundColor: '#bdb591',
-            name: '파친코',
-            imgUrl: 'http://image.yes24.com/goods/59382261/XL',
-        },
-        {
-            backgroundColor: '#68baea',
-            name: '숨결이 바람 될 때',
-            imgUrl: 'http://image.yes24.com/goods/30555650/XL',
-        },
-        {
-            backgroundColor: '#b7933f',
-            name: '당신 거기 있어줄래요?',
-            imgUrl: 'https://t1.daumcdn.net/cfile/tistory/207B32444FCBEEFA27',
-        },
-        {
-            backgroundColor: '#53090a',
-            name: '홍학의 자리',
-            imgUrl: 'https://img.ridicdn.net/cover/371002434/xxlarge',
-        },
-        {
-            backgroundColor: '#3a75b7',
-            name: '모순',
-            imgUrl: 'https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/N1a/image/5rhoc4X-0JLibJG3grC_-Ux_Fh0.jpg',
-        },
-        {
-            backgroundColor: '#a50c13',
-            name: '규칙 없음',
-            imgUrl: 'http://image.yes24.com/goods/92275597/XL',
-        },
-        {
-            backgroundColor: '#a6b1d8',
-            name: '프리즘',
-            imgUrl: 'http://image.yes24.com/goods/92300843/XL',
-        },
-        {
-            backgroundColor: '#1a0608',
-            name: '데미안',
-            imgUrl: 'https://image.aladin.co.kr/product/26/0/cover500/s742633278_1.jpg',
-        },
-        {
-            backgroundColor: '#5169b1',
-            name: '연금술사',
-            imgUrl: 'https://upload.wikimedia.org/wikipedia/ko/1/13/%EC%97%B0%EA%B8%88%EC%88%A0%EC%82%AC.jpg',
-        },
-        {
-            backgroundColor: '#febc02',
-            name: '모모',
-            imgUrl: 'http://image.yes24.com/goods/1263/XL',
-        },
-        {
-            backgroundColor: '#3f5d55',
-            name: '인간실격',
-            imgUrl: 'https://mblogthumb-phinf.pstatic.net/MjAxODEyMjlfMTIy/MDAxNTQ2MDQ0NzM2MzIw.OYOuO1tOiPtBtqvZClqAz3hJYcfMzMcjkYU-cU_4udsg.f6l7ano_acoXUfZdnmsAdSRrY4adMmd-v0VMN71Tku4g.JPEG.isof/C0%CE%B0A3BD%C7%B0DD.jpg?type=w800',
-        },
-    ]
+    const {focusBook, onOpenBook, books} = useBook();
+    const [previousColor, setPreviousColor] = useState<string | string[]>('white');
     
-    const bookList = books.filter(book => book.name.indexOf(search) !== -1).map((book, i) => {
-        const {backgroundColor, name, imgUrl} = book;
+    const bookList = books?.filter(book => book.name.indexOf(search) !== -1).map((book, i) => {
+        const {background_color, name, img_url} = book;
         return (
-            <StyledBook key={i} index={i} backgroundColor={backgroundColor} focusBook={focusBook} onClick={e => {
+            <StyledBook key={i} index={i} backgroundColor={background_color} focusBook={focusBook} onClick={e => {
                 focusBook !== i && onOpenBook(i)
-                setPreviousColor(books[i].backgroundColor);
+                setPreviousColor((typeof books[i].background_color === 'string') ? books[i].background_color : 'white');
             }}>
-                <img src={imgUrl}></img>
+                <img src={img_url}></img>
                 <div className="book-img"></div>
                 <div className='book-title'>{name}</div>
                 <div className='bottom-border border'></div>
