@@ -162,13 +162,13 @@ const MainComponent = ({search}: any) => {
     const [previousColor, setPreviousColor] = useState<string | string[]>('white');
     
     const bookList = books?.filter(book => book.name.indexOf(search) !== -1).map((book, i) => {
-        const {background_color, name, img_url} = book;
+        const {background_color, name, image_url} = book;
         return (
             <StyledBook key={i} index={i} backgroundColor={background_color} focusBook={focusBook} onClick={e => {
                 focusBook !== i && onOpenBook(i)
                 setPreviousColor((typeof books[i].background_color === 'string') ? books[i].background_color : 'white');
             }}>
-                <img src={img_url}></img>
+                <img src={image_url}></img>
                 <div className="book-img"></div>
                 <div className='book-title'>{name}</div>
                 <div className='bottom-border border'></div>

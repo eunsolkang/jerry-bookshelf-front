@@ -17,10 +17,19 @@ const StyledHeader = styled.div`
         word-break: keep-all;
     }
     .right-content{
-       width: 155px;
+       
        min-width: 1rem;
-       height: 100px;
+       //height: 100px;
+       margin-right: 2rem;
     }
+    .button{
+        cursor: pointer;
+        padding: 0.5rem 1.25rem;
+        color: white;
+        background-color: rgb(34, 34, 34);
+    }
+
+  
     
 `
 
@@ -31,7 +40,11 @@ const Header = ({onChange}: any) => {
                 제리 책방 
             </div>
             <Search onChange={onChange}></Search>
-            <div className='right-content'></div>
+            <div className='right-content'>
+                <div className='button'>
+                    책 추가
+                </div>
+            </div>
         </StyledHeader>
     )
 }
