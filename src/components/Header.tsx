@@ -41,9 +41,7 @@ const Header = ({onChange}: any) => {
             </div>
             <Search onChange={onChange}></Search>
             <div className='right-content'>
-                <div className='button'>
-                    책 추가
-                </div>
+          
             </div>
         </StyledHeader>
     )

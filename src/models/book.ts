@@ -1,4 +1,5 @@
-export type bookType = {
+export type Book = {
+    uuid: string;
     id: string;
     name: string;
     image_url: string;

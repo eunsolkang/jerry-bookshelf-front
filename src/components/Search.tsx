@@ -8,7 +8,7 @@ const SearchBlock = styled.div`
     padding-left: .5rem;
     border-radius: 5px;
     //flex: 1;
-    max-width: 300px;
+    min-width: calc(100vw - 150px);
     input{
         border: none;
         outline: none;
