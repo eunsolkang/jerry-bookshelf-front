@@ -14,7 +14,7 @@ const StyledMain = styled.div`
     flex-direction: column;
     padding-right: -100px;
     &::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera*/
+        display: none;
     }
 
     .list-title{
@@ -27,9 +27,6 @@ const StyledMain = styled.div`
         max-width: 64rem;
         border-bottom: 1px solid #1e2828;
         margin: 0 auto;
-        @media only screen and (max-width: 768px) {
-          
-        }
     }
     .book-list-container{
         margin: 0 auto;
@@ -43,14 +40,9 @@ const StyledMain = styled.div`
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        //width: 66rem;
-        @media only screen and (max-width: 768px) {
-         // width: 100%;
-        }
     }
 `
 const StyledPlaceHolder = styled.div`
-    //background: #CFD9D9;
     cursor: pointer;
     margin: 1rem;
     width: 20rem;
@@ -61,7 +53,6 @@ const StyledPlaceHolder = styled.div`
     flex-direction: column;
     position: relative;
     @media only screen and (max-width: 768px) {
-        //width: 100%;
         margin-left: 0;
         margin-right: 0;
         margin-top: 1rem;
@@ -94,8 +85,6 @@ const StyledPlaceHolder = styled.div`
             background-color: rgba(165, 165, 165, 0.1);
         }
     }
-
-    /*해당되는 컴포넌트에 적용*/
     -webkit-animation: skeleton-gradient 1.8s infinite ease-in-out;
     animation: skeleton-gradient 1.8s infinite ease-in-out;
 `

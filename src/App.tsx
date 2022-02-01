@@ -1,5 +1,4 @@
 import {Switch, Route} from 'react-router-dom'
-import MainComponent from './components/Book/MainComponent';
 import MainPage from './pages/MainPage';
 import PostingPage from './pages/PostingPage';
 

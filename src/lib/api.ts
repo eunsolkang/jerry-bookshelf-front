@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Book, RequestBook } from "../models/book";
 
 const api = axios.create({
     baseURL: `${process.env.REACT_APP_SERVER_URL}`,

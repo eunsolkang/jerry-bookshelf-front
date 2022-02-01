@@ -1,4 +1,3 @@
-import { ChangeEvent } from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.div`

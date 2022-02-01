@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { createBook } from "../lib/api";
 
 export default function usePost(){
@@ -37,17 +37,13 @@ export default function usePost(){
         }
 
         try{
-            const res = await createBook(requestBook);
+            await createBook(requestBook);
             alert('추가가 완료되었습니다.');
             window.location.href = '/';
         } catch(e){
             alert('오류가 발생했습니다!')
         }
     }
-
-    useEffect(()=>{
-
-    }, [])
 
     return {onChangeInput, editorRef, onClickSubmit}
 

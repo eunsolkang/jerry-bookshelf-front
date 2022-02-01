@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Prism from 'prismjs';
-// 여기 css를 수정해서 코드 하이라이팅 커스텀 가능
 import 'prismjs/themes/prism.css';
 
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Viewer } from '@toast-ui/react-editor';
 
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
-import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import { Book } from '../../models/book';
 
 const PopupBlock = styled.div<{ focusBook: Book | null, previousBook: Book | null | undefined }>`
@@ -41,7 +38,6 @@ const PopupBlock = styled.div<{ focusBook: Book | null, previousBook: Book | nul
         }
         .book-img img {
             height: 70vh;
-            //width: 30vh;
         }
         .contents{
             padding: 1.5rem;
@@ -56,7 +52,6 @@ const PopupBlock = styled.div<{ focusBook: Book | null, previousBook: Book | nul
                 margin-right: 0rem;
             }
             .book-img img {
-                /* height: 70vh; */
                 width: 100vw;
                 height: auto;
             }
@@ -96,15 +91,11 @@ type PopupComponentType = {
 }
 
 const Popup:React.FC<PopupComponentType> = ({focusBook, previousBook, onCloseBook}) => {
-    console.log(focusBook);
-    
-    const reportMarkdown = focusBook?.report || `# 아직 독후감이 없습니다! \n 이렇게 구분하나?`
-    
     return (
         <PopupBlock focusBook={focusBook} previousBook={previousBook}>
             <div className='contents-box'>
                 <div className="book-img">
-                    <img src={focusBook?.image_url ?? previousBook?.image_url}></img>
+                    <img src={focusBook?.image_url ?? previousBook?.image_url} alt='book'></img>
                 </div>
                 <div className="contents">
                 { focusBook?.report && <Viewer initialValue={focusBook.report} />}

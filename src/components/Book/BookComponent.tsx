@@ -1,5 +1,4 @@
-import { Children } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Book } from "../../models/book";
 
 const StyledBookComponent = styled.div< { backgroundColor : string} >`
@@ -85,7 +84,7 @@ const BookComponent:React.FC<BookComponentType> = ({backgroundColor, onOpenBook,
     const {name, image_url} = book;
     return (
         <StyledBookComponent backgroundColor={backgroundColor} onClick={e => onOpenBook(book)}>
-            <img src={image_url}></img>
+            <img src={image_url} alt='book'></img>
             <div className='book-title'>{name}</div>
             <div className='bottom-border border'></div>
             <div className='right-border border'></div>

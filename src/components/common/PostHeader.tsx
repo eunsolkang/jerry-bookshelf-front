@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Search from "./Search";
 
 const StyledPostHeader = styled.div`
     height: 60px;
