@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Book } from "../models/book";
+import { Book, RequestBook } from "../models/book";
 
 const api = axios.create({
     baseURL: `${process.env.REACT_APP_SERVER_URL}`,
@@ -12,6 +12,8 @@ export const getBookList= async() => {
     return res.data;
     
 }
+
+export const createBook = (book: any) => api.post('/book', book)
 
 export default api;
 

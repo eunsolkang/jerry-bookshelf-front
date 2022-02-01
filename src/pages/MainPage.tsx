@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import MainComponent from "../components/MainComponent";
-import Wrapper from "../components/Wrapper";
+import Header from "../components/common/Header";
+import MainComponent from "../components/Book/MainComponent";
+import Wrapper from "../components/common/Wrapper";
 import useSearch from "../hooks/useSearch";
 
 const MainPage = () => {

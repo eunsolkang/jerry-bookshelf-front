@@ -1,14 +1,12 @@
-import Header from "../components/Header";
-import MainComponent from "../components/MainComponent";
-import PostEditor from "../components/PostEditor";
-import Wrapper from "../components/Wrapper";
-import useSearch from "../hooks/useSearch";
+import PostEditor from "../components/Post/PostEditor";
+import Wrapper from "../components/common/Wrapper";
+import PostHeader from "../components/common/PostHeader";
 
 const PostingPage = () => {
-
-    const {search, onChange} = useSearch();
+   
     return (
         <>
+        <PostHeader></PostHeader>
         <Wrapper>
             <PostEditor></PostEditor>
         </Wrapper>
