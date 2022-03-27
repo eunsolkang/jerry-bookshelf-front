@@ -1,4 +1,4 @@
-import PostEditor from "../components/Post/PostEditor";
+import PostEditor from "../components/post/PostEditor";
 import Wrapper from "../components/common/Wrapper";
 import PostHeader from "../components/common/PostHeader";
 

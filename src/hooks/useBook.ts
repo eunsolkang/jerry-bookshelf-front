@@ -19,9 +19,9 @@ export default function useBook(){
     }
 
     const handleBookList = async() => {
-        const list:Book[] = await getBookList() ?? [];        
-
-        setBooks(list);
+        const response = await getBookList();
+        
+        setBooks(response.data);
     }
 
     useEffect(()=>{
