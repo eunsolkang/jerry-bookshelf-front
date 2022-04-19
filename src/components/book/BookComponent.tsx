@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Book } from "../../models/book";
+import Rating from "./Rating";
 
 const StyledBookComponent = styled.div< { backgroundColor : string} >`
     background: ${props => props.backgroundColor};
@@ -11,58 +12,21 @@ const StyledBookComponent = styled.div< { backgroundColor : string} >`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-radius: 24px;
     position: relative;
 
     @media only screen and (max-width: 768px) {
         width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 1rem;
-        margin-bottom: 0;
+        margin: 1rem 0 0;
     }
 
-    .border{
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.5);
-        transition-duration: 1s;
-    }
-    .bottom-border{
-        bottom: 0;
-        width:0;
-        height: 5px;
-    }
-    .right-border{
-        right: 0;
-        width: 5px;
-        height: 0;
-    }
-    .left-border{
-        left: 0;
-        width:5px;
-        height: 0px;
-    }
-    .top-border{
-        top: 0;
-        width:0;
-        height: 5px;
-    }
-
-
-    &:hover > .bottom-border, &:hover > .top-border{
-        width:100%
-    }
-    &:hover > .left-border, &:hover > .right-border{
-        height: 100%;
-    }
-
-   
     & > .book-img{
         width: 9.5rem;
         height : 240px;
     }
     & > img {
         height : 210px;;
-        padding-top: 1rem;
+        //padding-top: 1rem;
         box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
     }
 
@@ -72,6 +36,37 @@ const StyledBookComponent = styled.div< { backgroundColor : string} >`
         padding-top: 1rem;
         font-weight: 300;
     }
+    & > .book-cover {
+       
+       display: flex;
+       align-items: flex-start;
+       justify-content: flex-end;
+       flex-direction: column;
+       
+       transition: background-color 0.3s ease-in-out;
+       visibility: hidden;
+       position: absolute;
+       background-color: rgba(0, 0, 0, 0.0);
+       min-width: 100%;
+       min-height: 100%;
+       box-sizing: border-box;
+       padding: 1rem;
+       border-radius: 24px;
+       & > .name{
+        color: white;
+        margin-top: .5rem;
+        font-weight: bold;
+       } 
+       & > .author{
+        font-size: 0.75rem;
+        color: rgb(212, 212, 212);
+       } 
+    }
+    &:hover > .book-cover{
+      visibility: initial;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
 
 `
 type BookComponentType = {
@@ -81,15 +76,16 @@ type BookComponentType = {
 }
 
 const BookComponent:React.FC<BookComponentType> = ({backgroundColor, onOpenBook, book}) => {
-    const {name, image_url} = book;
+    const {name, imageUrl, author} = book;
     return (
         <StyledBookComponent backgroundColor={backgroundColor} onClick={e => onOpenBook(book)}>
-            <img src={image_url} alt='book'></img>
-            <div className='book-title'>{name}</div>
-            <div className='bottom-border border'></div>
-            <div className='right-border border'></div>
-            <div className='left-border border'></div>
-            <div className='top-border border'></div>
+            <img src={imageUrl} alt='book'></img>
+            <div className='book-cover'>
+                <div className='author'>{author}</div>
+                <div className='name'>{name}</div>
+                <Rating rating={book.rating}/>
+            </div>
+            {/*<div className='book-title'>{name}</div>*/}
         </StyledBookComponent>
     )
 }

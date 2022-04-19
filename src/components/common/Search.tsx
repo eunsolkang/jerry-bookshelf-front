@@ -2,10 +2,7 @@ import styled from "styled-components";
 
 const SearchBlock = styled.div`
     background-color: #f2f2f2;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-right: .75rem;
-    padding-left: .5rem;
+    padding: .5rem .75rem .5rem .5rem;
     border-radius: 5px;
     //flex: 1;
     //min-width: calc(100vw - 350px);

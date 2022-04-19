@@ -1,3 +1,4 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @font-face {
   font-family: '국립박물관문화재단클래식B';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
@@ -11,7 +12,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(0, 0, 0, 0.05);
 }
 
 code {
@@ -20,5 +20,5 @@ code {
 }
 
 *{
-  font-family: '국립박물관문화재단클래식B';
+  font-family: 'Nanum Gothic', sans-serif;
 }

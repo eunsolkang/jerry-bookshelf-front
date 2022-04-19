@@ -17,6 +17,7 @@ const StyledHeader = styled.div`
     }
     .title{
         color: black;
+        font-family: '국립박물관문화재단클래식B';
         text-decoration: none;
         padding: 2rem;
         word-break: keep-all;

@@ -64,7 +64,7 @@ const PopupBlock = styled.div<{ focusBook: Book | null, previousBook: Book | nul
     ${
         props => {
             if ( props.focusBook !== null ){
-                const color = props.focusBook.background_color;
+                const color = props.focusBook.backgroundColor;
                 return `
                     background-color: ${color};
                     display: block;
@@ -73,7 +73,7 @@ const PopupBlock = styled.div<{ focusBook: Book | null, previousBook: Book | nul
             }
             else{
                 return `
-                    background-color: ${props.previousBook?.background_color};
+                    background-color: ${props.previousBook?.backgroundColor};
                     width: 100%;
                     margin-left:-100%;
                     .close-btn{
@@ -95,7 +95,7 @@ const Popup:React.FC<PopupComponentType> = ({focusBook, previousBook, onCloseBoo
         <PopupBlock focusBook={focusBook} previousBook={previousBook}>
             <div className='contents-box'>
                 <div className="book-img">
-                    <img src={focusBook?.image_url ?? previousBook?.image_url} alt='book'></img>
+                    <img src={focusBook?.imageUrl ?? previousBook?.imageUrl} alt='book'></img>
                 </div>
                 <div className="contents">
                 { previousBook?.report && <Viewer initialValue={previousBook.report} />}

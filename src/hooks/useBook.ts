@@ -6,7 +6,7 @@ import { Book } from "../models/book";
 
 export default function useBook(){
     const [focusBook, setFocusBook] = useState<Book | null>(null);
-    const [books, setBooks] = useState<Book[]>();
+    const [books, setBooks] = useState<any[]>([]);
     const [previousBook, setPreviousBook] = useState<Book | null>()
 
     const onOpenBook = (book: Book) => {
@@ -19,9 +19,9 @@ export default function useBook(){
     }
 
     const handleBookList = async() => {
-        const response = await getBookList();
+        const response = getBookList();
         
-        setBooks(response.data);
+        setBooks(response);
     }
 
     useEffect(()=>{

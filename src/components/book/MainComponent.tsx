@@ -53,10 +53,7 @@ const StyledPlaceHolder = styled.div`
     flex-direction: column;
     position: relative;
     @media only screen and (max-width: 768px) {
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 1rem;
-        margin-bottom: 0;
+        margin: 1rem 0 0;
     }
     @-webkit-keyframes skeleton-gradient {
         0% {
@@ -93,9 +90,6 @@ const MainComponent = ({search}: any) => {
     if ( !books ){
         return (
             <StyledMain>
-                <div className='list-title'>
-                    책 목록
-                </div>
                 <div className='book-list-container'>
                     <div className='book-list'>
                         <StyledPlaceHolder/>
@@ -113,18 +107,14 @@ const MainComponent = ({search}: any) => {
         )
     }
     const bookList = books?.filter(book => book?.name?.indexOf(search) !== -1).map((book, i) => {
-        const {background_color, uuid} = book;
+        const {backgroundColor, uuid} = book;
         return (
-            <BookComponent backgroundColor={background_color} onOpenBook={onOpenBook} book={book} key={uuid}></BookComponent>
+            <BookComponent backgroundColor={backgroundColor} onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
         )
     });
 
-    
     return (
         <StyledMain>
-            <div className='list-title'>
-                책 목록
-            </div>
             <div className='book-list-container'>
                 <div className='book-list'>
                     {bookList}

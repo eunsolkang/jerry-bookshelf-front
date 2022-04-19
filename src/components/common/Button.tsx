@@ -12,15 +12,15 @@ const buttonStyle = css`
     color : white;
     outline : none;
     cursor: pointer;
-    background-color : ${palette.gray[8]};
+    background-color : ${palette.primary};
     &:hover{
         background-color : ${palette.gray[7]}
     }
     ${(props: any) => 
         props.fullWidth &&
         css `
-            padding-top : 0.75rem;
-            padding-bottom : 0.75rem;
+            padding-top : 0.85rem;
+            padding-bottom : 0.85rem;
             width: 100%;
             font-size : 0.925rem;
         `
@@ -57,10 +57,9 @@ const StyledLink = styled(Link)`
 
 
 const Button:React.FC<any> = props => {
-    
     return props.to ? 
-        (<StyledLink {...props} cyan={props.cyan ? 1 : 0}/>):
-        (<StyledButton {...props}/>)
+        (<StyledLink {...props} className='link-button'/> ):
+        (<StyledButton {...props} className='button'/>)
 }
 
 export default Button;

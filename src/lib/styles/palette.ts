@@ -23,6 +23,7 @@ const palette = {
       '#0c8599',
       '#0b7285',
     ],
+    primary: 'rgb(34, 34, 34)'
   };
   
   export default palette;

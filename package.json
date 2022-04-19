@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@babel/helper-environment-visitor": "^7.16.7",
-    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@toast-ui/editor-plugin-code-syntax-highlight": "^3.0.0",
@@ -22,15 +21,14 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
