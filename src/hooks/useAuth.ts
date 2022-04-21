@@ -26,7 +26,6 @@ export default function useAuth(){
         const isEmail = regExp.test(input.email);
         const isPasswordValid = input.password.length >= 8;
 
-
         if ( !isEmail ){
             setLabelText(prevState => {
                 return {
@@ -43,6 +42,8 @@ export default function useAuth(){
                 }
             });
         }
+
+
 
     }
 
