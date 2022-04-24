@@ -19,9 +19,10 @@ export default function useBook(){
     }
 
     const handleBookList = async() => {
-        const response = getBookList();
+        const response = await getBookList();
+        console.log(response);
         
-        setBooks(response);
+        setBooks(response.data);
     }
 
     useEffect(()=>{

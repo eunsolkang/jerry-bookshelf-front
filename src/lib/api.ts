@@ -222,7 +222,7 @@ const books = [
 
 ]
 
-export const getBookList = () => books;
+export const getBookList = () =>  api.get('/book');
 
 export const createBook = (book: any) => api.post('/book', book)
 

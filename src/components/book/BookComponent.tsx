@@ -71,21 +71,19 @@ const StyledBookComponent = styled.div< { backgroundColor : string} >`
 `
 type BookComponentType = {
     onOpenBook: (book: Book) => void, 
-    backgroundColor: string,
     book: Book
 }
 
-const BookComponent:React.FC<BookComponentType> = ({backgroundColor, onOpenBook, book}) => {
+const BookComponent:React.FC<BookComponentType> = ({onOpenBook, book}) => {
     const {name, imageUrl, author} = book;
     return (
-        <StyledBookComponent backgroundColor={backgroundColor} onClick={e => onOpenBook(book)}>
+        <StyledBookComponent backgroundColor={book.backgroundColor} onClick={e => onOpenBook(book)}>
             <img src={imageUrl} alt='book'></img>
             <div className='book-cover'>
                 <div className='author'>{author}</div>
                 <div className='name'>{name}</div>
                 <Rating rating={book.rating}/>
             </div>
-            {/*<div className='book-title'>{name}</div>*/}
         </StyledBookComponent>
     )
 }

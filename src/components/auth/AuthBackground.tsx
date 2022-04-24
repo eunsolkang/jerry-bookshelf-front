@@ -74,9 +74,8 @@ const AuthBackground = () => {
     const { books, onOpenBook } = useBook();
 
     const bookList = [...(books.slice(0, 12)), ...books.slice(0, 12)].map((book, i) => {
-        const {backgroundColor, uuid} = book;
         return (
-            <BookComponent backgroundColor={backgroundColor} onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
+            <BookComponent onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
         )
     });
 

@@ -107,9 +107,8 @@ const MainComponent = ({search}: any) => {
         )
     }
     const bookList = books?.filter(book => book?.name?.indexOf(search) !== -1).map((book, i) => {
-        const {backgroundColor, uuid} = book;
         return (
-            <BookComponent backgroundColor={backgroundColor} onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
+            <BookComponent onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
         )
     });
 

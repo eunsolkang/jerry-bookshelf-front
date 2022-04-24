@@ -1,6 +1,6 @@
 import {Switch, Route} from 'react-router-dom'
 import MainPage from './pages/MainPage';
-import PostingPage from './pages/PostingPage';
+import AddBookPage from './pages/AddBookPage';
 import LoginPage from "./pages/LoginPage";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <Switch>
           <Route exact path='/' component={MainPage} ></Route>
           <Route exact path='/login' component={LoginPage} ></Route>
-          <Route exact path='/posting' component={PostingPage} ></Route>
+          <Route exact path='/posting' component={AddBookPage} ></Route>
       </Switch>
     </>
   );
