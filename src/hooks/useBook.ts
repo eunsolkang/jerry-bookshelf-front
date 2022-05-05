@@ -20,7 +20,6 @@ export default function useBook(){
 
     const handleBookList = async() => {
         const response = await getBookList();
-        console.log(response);
         
         setBooks(response.data);
     }

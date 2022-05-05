@@ -8,13 +8,13 @@ const buttonStyle = css`
     border-radius : 4px;
     font-size : 1rem;
     font-weight : bold;
-    padding : 0.25rem 1rem;
-    color : white;
+    padding : 0.5rem 1rem;
+    color : ${palette.black};
     outline : none;
     cursor: pointer;
     background-color : ${palette.primary};
     &:hover{
-        background-color : ${palette.gray[7]}
+        background-color : #e5b122;
     }
     ${(props: any) => 
         props.fullWidth &&
@@ -30,9 +30,6 @@ const buttonStyle = css`
         css `
             background : ${palette.gray[4]} !important;
             cursor: default;
-            /* &:hover {
-                background : ${palette.cyan[4]}
-            } */
         `
     }
     ${(props: any) =>
@@ -52,9 +49,6 @@ const StyledButton = styled.button`
 const StyledLink = styled(Link)`
     ${buttonStyle}
 `;
-
-
-
 
 const Button:React.FC<any> = props => {
     return props.to ? 

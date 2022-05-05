@@ -6,7 +6,6 @@ export type RequestBook = {
     report: string,
 }
 export type Book = {
-    uuid: string;
     id: string;
     name: string;
     imageUrl: string;

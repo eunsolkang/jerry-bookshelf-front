@@ -1,10 +1,5 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@font-face {
-  font-family: '국립박물관문화재단클래식B';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

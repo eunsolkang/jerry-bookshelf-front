@@ -16,15 +16,14 @@ const StyledPostHeader = styled.div`
         text-decoration: none;
     }
     .title{
+        font-family: '국립박물관문화재단클래식B';
         color: black;
         text-decoration: none;
         padding: 2rem;
         word-break: keep-all;
     }
-    .right-content{
-       
+    .right-content{ 
        min-width: 1rem;
-       //height: 100px;
        margin-right: 2rem;
     }
     

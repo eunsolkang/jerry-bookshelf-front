@@ -1,7 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from "styled-components";
-import MainComponent from "../book/MainComponent";
 import Input from "../common/Input";
 import AuthBackground from "./AuthBackground";
 import Button from "../common/Button";
@@ -32,8 +29,9 @@ const StyledAuthFrom = styled.div`
       background-color: white;
       padding: 2.5rem;
       & > .title {
+        text-align: center;
         font-size: 1.25rem;
-        color: ${palette.primary};
+        color: ${palette.black};
         font-weight: bold;
         margin-bottom: 1.5rem;
       }
@@ -67,7 +65,7 @@ const StyledAuthFrom = styled.div`
         .link-login{
           font-weight: bold;
           cursor: pointer;
-          color: #34bf0d;
+          color: ${palette.primary};
         }
       }
       .google-login{
@@ -83,7 +81,7 @@ const StyledAuthFrom = styled.div`
         margin-top: 1rem;
         cursor: pointer;
         background-color: rgb(252, 252, 252);
-        color: ${palette.primary};
+        color: ${palette.black};
         img{
           margin-right: 1rem;
           width: 25px;
@@ -93,8 +91,58 @@ const StyledAuthFrom = styled.div`
   }
 `
 const AuthForm = () => {
-    const {onChangeInput, onClickRegister, labelText} = useAuth();
+    const {onChangeInput, onClickRegister,onClickLogin, labelText, isRegister, onClickLoginStep, onClickRegisterStep} = useAuth();
 
+    const registerForm = (
+      <div className={'auth-box'}>
+        <div className={'title'}>
+            제리책방 초대장 신청
+        </div>
+        <Input placeholder='이름 입력' onChange={onChangeInput} name='name'></Input>
+        <Input placeholder='이메일 입력' onChange={onChangeInput} name='email' labelText={labelText.email}></Input>
+        <Input placeholder='비밀번호 입력' onChange={onChangeInput} name='password' type='password' labelText={labelText.password}></Input>
+        <Button fullWidth onClick={onClickRegister}>초대장 받기</Button>
+        <div className='box-line'>
+            <div className='line'></div>
+            <div className='text'>
+                또는
+            </div>
+            <div className='line'></div>
+        </div>
+        <div className='google-login'>
+            <img src='icon/google.png'/>
+            구글계정으로 회원가입
+        </div>
+        <div className='info-login'>
+            이미 계정이 있다면, <span onClick={onClickLoginStep} className='link-login'>로그인</span>
+        </div>
+      </div>
+    )
+
+    const loginForm = (
+      <div className={'auth-box'}>
+        <div className={'title'}>
+            제리책방 로그인
+        </div>
+        <Input placeholder='이메일 입력' onChange={onChangeInput} name='email' labelText={labelText.email}></Input>
+        <Input placeholder='비밀번호 입력' onChange={onChangeInput} name='password' type='password' labelText={labelText.password}></Input>
+        <Button fullWidth onClick={onClickLogin}>로그인</Button>
+        <div className='box-line'>
+            <div className='line'></div>
+            <div className='text'>
+                또는
+            </div>
+            <div className='line'></div>
+        </div>
+        <div className='google-login'>
+            <img src='icon/google.png'/>
+            구글계정으로 로그인하기
+        </div>
+        <div className='info-login'>
+            아직 초대장이 없으신가요?, <span onClick={onClickRegisterStep} className='link-login'>초대장 받기</span>
+        </div>
+      </div>
+    )
     return (
         <StyledAuthFrom>
             <div className={'cover'}>
@@ -103,29 +151,7 @@ const AuthForm = () => {
                     <b>1,253</b> 개가 넘는 책들과 독후감을
                     <div>확인하세요</div>
                 </div>
-                <div className={'auth-box'}>
-                    <div className={'title'}>
-                        제리책방 회원가입
-                    </div>
-                    <Input placeholder='이름 입력' onChange={onChangeInput} name='name'></Input>
-                    <Input placeholder='이메일 입력' onChange={onChangeInput} name='email' labelText={labelText.email}></Input>
-                    <Input placeholder='비밀번호 입력' onChange={onChangeInput} name='password' type='password' labelText={labelText.password}></Input>
-                    <Button fullWidth onClick={onClickRegister}>회원가입</Button>
-                    <div className='box-line'>
-                        <div className='line'></div>
-                        <div className='text'>
-                            또는
-                        </div>
-                        <div className='line'></div>
-                    </div>
-                    <div className='google-login'>
-                        <img src='icon/google.png'/>
-                        구글계정으로 로그인하기
-                    </div>
-                    <div className='info-login'>
-                        이미 계정이 있다면, <span className='link-login'>로그인</span>
-                    </div>
-                </div>
+                {isRegister ? registerForm : loginForm}
             </div>
             <AuthBackground></AuthBackground>
         </StyledAuthFrom>

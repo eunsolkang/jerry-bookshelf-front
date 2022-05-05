@@ -49,6 +49,7 @@ const StyledAuthBackground = styled.div`
     }
     .left-move-bottom{
         animation-delay: 1s;
+        margin-left: 1rem
     }
     .left-move{
         animation-fill-mode: backwards;

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Button from "./Button";
 import Search from "./Search";
 
 const StyledHeader = styled.div`
@@ -16,23 +17,27 @@ const StyledHeader = styled.div`
         text-decoration: none;
     }
     .title{
+        display: flex;
+        align-items: center;
         color: black;
-        font-family: '국립박물관문화재단클래식B';
+       
         text-decoration: none;
+        font-size: 1rem;
         padding: 2rem;
         word-break: keep-all;
-    }
-    .right-content{
-       
-       min-width: 1rem;
-       //height: 100px;
-       margin-right: 2rem;
-    }
-    .button{
         cursor: pointer;
-        padding: 0.5rem 1.25rem;
-        color: white;
-        background-color: rgb(34, 34, 34);
+        img{
+            height: 30px;
+        }
+        span{
+            margin-left: .5rem;
+            font-family: 'Dongle', sans-serif;
+            font-size: 1.5rem;
+        }
+    }
+    .right-content{ 
+       min-width: 1rem;
+       margin-right: 2rem;
     }
     @media only screen and (max-width: 768px) {
         .title{
@@ -50,13 +55,12 @@ const Header = ({onChange}: any) => {
     return (
         <StyledHeader>
             <div className='title'>
-                제리 책방 
+                <img src='icon/logo.svg'></img>
+                <span>제리 책방</span>
             </div>
             <Search onChange={onChange}></Search>
             <div className='right-content'>
-                <Link to='/posting'>
-                    <div className='button'>등록</div>
-                </Link>
+                <Button to='/posting'>추가하기</Button>
             </div>
         </StyledHeader>
     )

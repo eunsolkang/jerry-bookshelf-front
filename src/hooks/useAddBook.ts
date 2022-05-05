@@ -17,9 +17,6 @@ export default function useAddBook(){
             ...input,
             [name]: value
         });
-
-        console.log(input);
-        
     }
 
     const onClickSubmit = async() => {
@@ -48,7 +45,6 @@ export default function useAddBook(){
     }
 
     const onChangeRating = (rating: number) => {
-        console.log(rating);
         setInput({
             ...input,
             rating: rating
@@ -56,6 +52,4 @@ export default function useAddBook(){
     }
 
     return {onChangeInput, editorRef, onClickSubmit, input, onChangeRating}
-
-    
 }

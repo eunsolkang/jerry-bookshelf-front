@@ -1,18 +1,19 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useBook from '../../hooks/useBook';
 import BookComponent from './BookComponent';
 import Popup from './Popup';
 
 const StyledMain = styled.div`
+    width: calc(100% - 2rem);
     height: calc(100vh - 80px);
     overflow-y: scroll;
     padding-top: 80px;
-    width: calc(100% - 2rem);
+    padding-right: -100px;
     margin-left: 1rem;
     margin-right: 1rem;
     display: flex;
     flex-direction: column;
-    padding-right: -100px;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -108,7 +109,9 @@ const MainComponent = ({search}: any) => {
     }
     const bookList = books?.filter(book => book?.name?.indexOf(search) !== -1).map((book, i) => {
         return (
-            <BookComponent onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
+            <Link to={`/book/${book.id}`}>
+                <BookComponent onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
+            </Link>
         )
     });
 
@@ -119,7 +122,7 @@ const MainComponent = ({search}: any) => {
                     {bookList}
                 </div>
             </div>
-            <Popup focusBook={focusBook} previousBook={previousBook} onCloseBook={onCloseBook}></Popup>
+            {/* <Popup focusBook={focusBook} previousBook={previousBook} onCloseBook={onCloseBook}></Popup> */}
         </StyledMain>
     )
 }

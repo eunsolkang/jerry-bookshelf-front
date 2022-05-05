@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Book } from "../../models/book";
-import Rating from "./Rating";
+import Rating from "../common/Rating";
 
 const StyledBookComponent = styled.div< { backgroundColor : string} >`
     background: ${props => props.backgroundColor};
