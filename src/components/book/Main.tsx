@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useBook from '../../hooks/useBook';
-import BookComponent from './BookComponent';
+import BookCard from './BookCard';
 import BookPlaceholder from './BookPlaceholder';
 
 const StyledMain = styled.div`
@@ -11,11 +11,13 @@ const StyledMain = styled.div`
     height: calc(100vh - 80px);
     overflow-y: scroll;
     padding-top: 80px;
+    
     .list-title{
         width: 100%;
-        padding-top: 1rem;
+        padding-top: 0rem;
         padding-bottom: .5rem;
-        font-size: ${({theme})=>theme.fontSizes.subTitle};;
+        margin-bottom: 1rem;
+        font-size: ${({theme})=>theme.fontSizes.listTitle};;
         font-weight: bold;
         border-bottom: 1px solid ${({theme})=>theme.colors.border};
         color: ${({theme})=>theme.colors.text};
@@ -24,10 +26,31 @@ const StyledMain = styled.div`
         ${({theme}) => theme.flex.columnCenter}
         width: min-content;
         margin: 0 auto;
+        padding-bottom: 80px;
     }
     .book-list{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+    @media only screen and (max-width: 768px) {
+        .list-title{
+            font-size: ${({theme})=>theme.mobileFonts.listTitle};;
+        }
+        .book-list-container{
+            width: 100%;
+            padding-left: .75rem;
+            padding-right: .75rem;
+            box-sizing: border-box;
+        }
+        .book-list{
+            width: 100%;
+            display: grid;
+            column-gap: .75rem;
+            row-gap: .75rem;
+            grid-template-columns: 1fr 1fr;
+        }
     }
 `
 
@@ -50,7 +73,7 @@ const Main = ({search}: any) => {
     const bookList = books?.filter(book => book?.name?.indexOf(search) !== -1).map((book, i) => {
         return (
             <Link to={`/book/${book.id}`}>
-                <BookComponent book={book} key={i}></BookComponent>
+                <BookCard book={book} key={i}></BookCard>
             </Link>
         )
     });

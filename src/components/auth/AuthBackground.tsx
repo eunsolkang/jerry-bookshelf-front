@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import useBook from '../../hooks/useBook';
-import BookComponent from "../book/BookComponent";
+import BookCard from "../book/BookCard";
 
 const listAnimation = (arrow: string) => {
     let result = '';
@@ -76,10 +76,10 @@ const AuthBackground = () => {
     if(!books){
         return <></>;
     }
-    
+
     const bookList = [...(books.slice(0, 12)), ...books.slice(0, 12)].map((book, i) => {
         return (
-            <BookComponent book={book} key={i}></BookComponent>
+            <BookCard book={book} key={i}></BookCard>
         )
     });
 

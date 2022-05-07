@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
 import { getBookList } from "../lib/api";
-import { Book } from "../models/book";
-
-
 
 export default function useBook(){
     const [books, setBooks] = useState<any[]>();
@@ -18,6 +15,4 @@ export default function useBook(){
     }, [])
 
     return {books}
-
-    
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router-dom'
-import palette from '../../lib/styles/palette'
 
 const buttonStyle = css`
     border : none;
@@ -9,10 +8,10 @@ const buttonStyle = css`
     font-size : .925rem;
     font-weight : bold;
     padding : 0.55rem 1.125rem 0.65rem;
-    color : ${palette.black};
+    color : ${({theme})=>theme.colors.text};
     outline : none;
     cursor: pointer;
-    background-color : ${palette.primary};
+    background-color : ${({theme})=>theme.colors.primary};
     &:hover{
         background-color : #e5b122;
     }
@@ -28,17 +27,8 @@ const buttonStyle = css`
     ${(props: any) => 
         props.disable &&
         css `
-            background : ${palette.gray[4]} !important;
+            background : ${({theme})=>theme.colors.disabled}; !important;
             cursor: default;
-        `
-    }
-    ${(props: any) =>
-        props.cyan &&
-        css `
-            background : ${palette.cyan[5]};
-            &:hover {
-                background : ${palette.cyan[4]}
-            }
         `
     }
 `

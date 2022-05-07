@@ -5,7 +5,7 @@ export type RequestBook = {
     backgroundColor: string,
     report: string,
 }
-export type Book = {
+export type BookType = {
     id: string;
     name: string;
     imageUrl: string;

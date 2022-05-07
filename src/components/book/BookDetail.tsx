@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import Wrapper from "../common/Wrapper";
-import BookComponent from "./BookComponent";
 import Rating from "../common/Rating";
 import { Viewer } from "@toast-ui/react-editor";
-import theme from "../../lib/styles/theme";
 
 const StyledBookDetail = styled.div<{backgroundColor: string}>`
     padding: 2rem;

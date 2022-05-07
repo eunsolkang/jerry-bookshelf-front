@@ -20,8 +20,7 @@ const mockDataBooks = {
     
             rating: 3.3,
     
-        },
-    
+        },    
         {
     
             backgroundColor: '#f4a9ae',
@@ -31,7 +30,7 @@ const mockDataBooks = {
             imageUrl: 'http://image.yes24.com/goods/80742923/XL',
     
         },
-    
+
         {
     
             backgroundColor: '#6c4e2c',

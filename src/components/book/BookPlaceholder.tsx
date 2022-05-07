@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 const StyledBookPlaceholder = styled.div`
+    ${({theme})=>theme.flex.columnCenter};
     margin: 1rem;
     width: 20rem;
     height : 20rem;
     border-radius: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     position: relative;
+    
     @media only screen and (max-width: 768px) {
         margin: 1rem 0 0;
     }
@@ -47,7 +45,7 @@ const StyledBookPlaceholder = styled.div`
 const BookPlaceholder = () => {
     return (
         <StyledBookPlaceholder>
-            
+
         </StyledBookPlaceholder>
     )
 }

@@ -3,7 +3,6 @@ import Input from "../common/Input";
 import AuthBackground from "./AuthBackground";
 import Button from "../common/Button";
 import useAuth from "../../hooks/useAuth";
-import palette from "../../lib/styles/palette";
 
 const StyledAuthFrom = styled.div`
   width: 100vw;
@@ -31,7 +30,7 @@ const StyledAuthFrom = styled.div`
       & > .title {
         text-align: center;
         font-size: 1.25rem;
-        color: ${palette.black};
+        color: ${({theme})=>theme.colors.text};
         font-weight: bold;
         margin-bottom: 1.5rem;
       }
@@ -65,7 +64,7 @@ const StyledAuthFrom = styled.div`
         .link-login{
           font-weight: bold;
           cursor: pointer;
-          color: ${palette.primary};
+          color: ${({theme})=>theme.colors.primary};
         }
       }
       .google-login{
@@ -81,7 +80,7 @@ const StyledAuthFrom = styled.div`
         margin-top: 1rem;
         cursor: pointer;
         background-color: rgb(252, 252, 252);
-        color: ${palette.black};
+        color: ${({theme})=>theme.colors.text};
         img{
           margin-right: 1rem;
           width: 25px;
