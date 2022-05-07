@@ -15,18 +15,12 @@ const StyledBookComponent = styled.div< { backgroundColor : string} >`
     border-radius: 24px;
     position: relative;
 
-    @media only screen and (max-width: 768px) {
-        width: 100%;
-        margin: 1rem 0 0;
-    }
-
     & > .book-img{
         width: 9.5rem;
         height : 240px;
     }
     & > img {
         height : 210px;;
-        //padding-top: 1rem;
         box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
     }
 
@@ -67,17 +61,28 @@ const StyledBookComponent = styled.div< { backgroundColor : string} >`
       background-color: rgba(0, 0, 0, 0.6);
     }
 
+    @media only screen and (max-width: 768px) {
+        & > .book-img{
+            width: 2.5rem;
+            //height : 240px;
+        }
+        & > img{
+            height: 100px;;
+        }
+        width: 100%;
+        margin: 1rem 0 0;
+    }
+
 
 `
 type BookComponentType = {
-    onOpenBook: (book: Book) => void, 
     book: Book
 }
 
-const BookComponent:React.FC<BookComponentType> = ({onOpenBook, book}) => {
+const BookComponent:React.FC<BookComponentType> = ({book}) => {
     const {name, imageUrl, author} = book;
     return (
-        <StyledBookComponent backgroundColor={book.backgroundColor} onClick={e => onOpenBook(book)}>
+        <StyledBookComponent backgroundColor={book.backgroundColor}>
             <img src={imageUrl} alt='book'></img>
             <div className='book-cover'>
                 <div className='author'>{author}</div>

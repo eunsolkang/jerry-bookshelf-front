@@ -36,7 +36,7 @@ const StyledRating = styled.div<{isRatingHover: boolean}>`
 
 const Rating:React.FC<RatingComponentType> = ({rating = 0, onChangeRating, size = 16}) => {
     return (
-        <StyledRating isRatingHover={onChangeRating ? true:false}>
+        <StyledRating isRatingHover={onChangeRating ? true:false} className='rating-input'>
             {[5, 4, 3, 2, 1].map((count, i)=>{
                 return (
                     <svg

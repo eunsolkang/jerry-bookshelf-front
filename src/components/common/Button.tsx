@@ -5,10 +5,10 @@ import palette from '../../lib/styles/palette'
 
 const buttonStyle = css`
     border : none;
-    border-radius : 4px;
-    font-size : 1rem;
+    border-radius : 8px;
+    font-size : .925rem;
     font-weight : bold;
-    padding : 0.5rem 1rem;
+    padding : 0.55rem 1.125rem 0.65rem;
     color : ${palette.black};
     outline : none;
     cursor: pointer;

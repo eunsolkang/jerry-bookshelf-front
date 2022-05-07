@@ -24,7 +24,7 @@ const palette = {
       '#0b7285',
     ],
     primary: '#fcbe11',
-    black: 'rgb(34, 34, 34)',
+    black: '#303441',
     white: '#fff',
   };
   

@@ -1,5 +1,5 @@
 import Header from "../components/common/Header";
-import MainComponent from "../components/book/MainComponent";
+import Main from "../components/book/Main";
 import Wrapper from "../components/common/Wrapper";
 import useSearch from "../hooks/useSearch";
 
@@ -10,7 +10,7 @@ const MainPage = () => {
         <>
         <Header onChange={onChange}></Header>
         <Wrapper>
-            <MainComponent search={search}></MainComponent>
+            <Main search={search}></Main>
         </Wrapper>
         </>
     )

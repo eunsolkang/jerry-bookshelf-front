@@ -24,7 +24,7 @@ const StyledAuthFrom = styled.div`
       color: white;
     }
     .auth-box{
-      border-radius: 4px;
+      border-radius: 8px;
       width: 320px;
       background-color: white;
       padding: 2.5rem;
@@ -36,10 +36,10 @@ const StyledAuthFrom = styled.div`
         margin-bottom: 1.5rem;
       }
       & > .input + .input {
-        margin-top: 1rem;
+        margin-top: .9rem;
       }
       & > .button{
-        margin-top: 1rem;
+        margin-top: .9rem;
       }
       .box-line{
         display: flex;
@@ -75,7 +75,7 @@ const StyledAuthFrom = styled.div`
         padding-top: .75rem;
         padding-bottom: .75rem;
         box-sizing: border-box;
-        border-radius: 4px;
+        border-radius: 8px;
         border: 1px solid rgb(214, 214, 214);
         padding-left: 1rem;
         margin-top: 1rem;

@@ -3,6 +3,7 @@ import Wrapper from "../common/Wrapper";
 import BookComponent from "./BookComponent";
 import Rating from "../common/Rating";
 import { Viewer } from "@toast-ui/react-editor";
+import theme from "../../lib/styles/theme";
 
 const StyledBookDetail = styled.div<{backgroundColor: string}>`
     padding: 2rem;
@@ -10,7 +11,7 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
     height: 280px;
     background-color: ${props => props.backgroundColor};
     header{
-        height: 70px;
+        height: 60px;
     }
     .book-image{
         width: 300px;
@@ -19,7 +20,7 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
         display: flex;
         flex-direction: row;
         .info-row{
-            margin-left: 1rem;
+            margin-left: 2rem;
             display: flex;
             flex-direction: column;
             .category{
@@ -31,18 +32,30 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
                 color: rgba(255, 255, 255, 0.7);
             }
             .title{
-                font-size: 2rem;
+                font-size: ${({theme}) => theme.fontSizes.title};
                 font-weight: bold;
                 color: white;
             }
             .author{
                 margin-left: .25rem;
                 margin-top: .75rem;
-                font-size: 1.2rem;
+                font-size: ${({theme}) => theme.fontSizes.subTitle};
                 font-weight: bold;
                 color: rgba(255, 255, 255, 0.7);
             }
+            .rating-input{
+                margin-top: 1rem;
+                margin-left: .25rem;
+            }
         }
+    }
+    .contents{
+        border-radius:24px;
+        box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
+        margin-top: -250px;
+        background-color: white;
+        margin-left: calc(300px + 2rem);
+        padding: 1.25rem;
     }
 `;
 
@@ -57,7 +70,9 @@ const BookDetail = () => {
         imageUrl: 'http://image.yes24.com/goods/80742923/XL',
 
     };
+    const report = "## test\n## dasd\n기잉이임ㄴㅇ밈ㄴㅇ러ㅗㅁㅇ나ㅓ롬너아로머ㅏㄴㅇ로ㅓㅏ몽럼농라ㅓ몬ㅇ라ㅓㅁㄴㅇㄻㄴㄹㅇ\n\n\n\nasddassadgfsfgsdfg\n\n\n\naasdasdasdas\n\n\n\nasdasdasdasdasdfjkahfjkafafdasfdj\nsafjskfjaslkdfjasdf\nasjdfkad"
     return(
+        
         <StyledBookDetail backgroundColor='#f4a9ae'>
             <Wrapper>
                 <header>
@@ -79,7 +94,7 @@ const BookDetail = () => {
                     </div>
                 </div>
                 <div className="contents">
-                    <Viewer initialValue={'독후감'} />
+                    <Viewer initialValue={report} />
                 </div>
             </Wrapper>
         </StyledBookDetail>

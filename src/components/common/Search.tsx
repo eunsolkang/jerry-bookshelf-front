@@ -4,8 +4,6 @@ const SearchBlock = styled.div`
     background-color: #f2f2f2;
     padding: .5rem .75rem .5rem .5rem;
     border-radius: 5px;
-    //flex: 1;
-    //min-width: calc(100vw - 350px);
     max-width: calc(100vw - 200px);
     input{
         border: none;

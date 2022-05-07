@@ -72,11 +72,14 @@ const StyledAuthBackground = styled.div`
 
 
 const AuthBackground = () => {
-    const { books, onOpenBook } = useBook();
-
+    const { books } = useBook();
+    if(!books){
+        return <></>;
+    }
+    
     const bookList = [...(books.slice(0, 12)), ...books.slice(0, 12)].map((book, i) => {
         return (
-            <BookComponent onOpenBook={onOpenBook} book={book} key={i}></BookComponent>
+            <BookComponent book={book} key={i}></BookComponent>
         )
     });
 

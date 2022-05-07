@@ -4,7 +4,7 @@ const StyledInput = styled.div`
     background-color: white;
     padding: .75rem 1rem;
     border: 1px solid #dbdbdb;
-    border-radius: 4px;
+    border-radius : 8px;
     ${(props: any) => 
             props.fullWidth && 
             css`
