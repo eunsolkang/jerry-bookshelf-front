@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Wrapper from "../common/Wrapper";
 import Rating from "../common/Rating";
 import { Viewer } from "@toast-ui/react-editor";
+import useBookById from "../../hooks/book/useBookById";
 
 const StyledBookDetail = styled.div<{backgroundColor: string}>`
     padding: 2rem;
@@ -13,6 +14,7 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
     }
     .book-image{
         width: 300px;
+        box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
     }
     .book-header{
         display: flex;
@@ -58,41 +60,35 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
 `;
 
 const BookDetail = () => {
-    const book =  {
-        id: '12345',
-        backgroundColor: '#f4a9ae',
-        report: '',
-        name: '일의 기쁨과 슬픔',
-        author: '장류진',
-        rating: 1,
-        imageUrl: 'http://image.yes24.com/goods/80742923/XL',
-
-    };
-    const report = "## test\n## dasd\n기잉이임ㄴㅇ밈ㄴㅇ러ㅗㅁㅇ나ㅓ롬너아로머ㅏㄴㅇ로ㅓㅏ몽럼농라ㅓ몬ㅇ라ㅓㅁㄴㅇㄻㄴㄹㅇ\n\n\n\nasddassadgfsfgsdfg\n\n\n\naasdasdasdas\n\n\n\nasdasdasdasdasdfjkahfjkafafdasfdj\nsafjskfjaslkdfjasdf\nasjdfkad"
+    const bookQuery = useBookById();
+    
+    if(!bookQuery.isSuccess){
+        return <></>
+    }
     return(
         
-        <StyledBookDetail backgroundColor='#f4a9ae'>
+        <StyledBookDetail backgroundColor={bookQuery.data.backgroundColor}>
             <Wrapper>
                 <header>
 
                 </header>
                 <div className='book-header'>
-                    <img className='book-image' src={book.imageUrl}></img>
+                    <img className='book-image' src={bookQuery.data.imageUrl}></img>
                     <div className='info-row'>
                         <div className='category'>
                             에세이
                         </div>
                         <div className='title'>
-                            {book.name}
+                            {bookQuery.data.name}
                         </div>
                         <div className='author'>
-                            {book.author}
+                            {bookQuery.data.author}
                         </div>
-                        <Rating rating={book.rating}/>
+                        <Rating rating={bookQuery.data.rating}/>
                     </div>
                 </div>
                 <div className="contents">
-                    <Viewer initialValue={report} />
+                    <Viewer initialValue={bookQuery.data.report} />
                 </div>
             </Wrapper>
         </StyledBookDetail>

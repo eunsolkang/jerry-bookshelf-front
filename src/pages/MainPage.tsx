@@ -4,13 +4,11 @@ import Wrapper from "../components/common/Wrapper";
 import useSearch from "../hooks/useSearch";
 
 const MainPage = () => {
-
-    const {search, onChange} = useSearch();
     return (
         <>
-        <Header onChange={onChange}></Header>
+        <Header></Header>
         <Wrapper>
-            <Main search={search}></Main>
+            <Main/>
         </Wrapper>
         </>
     )

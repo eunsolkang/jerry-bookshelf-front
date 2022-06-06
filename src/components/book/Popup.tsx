@@ -6,9 +6,9 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import { Viewer } from '@toast-ui/react-editor';
 
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
-import { BookType } from '../../models/book';
+import { Book } from '../../types/book';
 
-const PopupBlock = styled.div<{ focusBook: BookType | null, previousBook: BookType | null | undefined }>`
+const PopupBlock = styled.div<{ focusBook: Book | null, previousBook: Book | null | undefined }>`
     position: absolute;
     transition: width 0.75s,  margin-left 0.75s ease-in-out, height 0.75s, left 0.75s, top 0.75s;
     z-index: 100;
@@ -85,8 +85,8 @@ const PopupBlock = styled.div<{ focusBook: BookType | null, previousBook: BookTy
     }
 `
 type PopupComponentType = {
-    focusBook: BookType | null;
-    previousBook: BookType | null | undefined;
+    focusBook: Book | null;
+    previousBook: Book | null | undefined;
     onCloseBook: () => void
 }
 

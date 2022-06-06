@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import useBook from '../../hooks/useBook';
+import useBook from '../../hooks/book/useBookList';
 import BookCard from "../book/BookCard";
 
 const listAnimation = (arrow: string) => {
@@ -23,6 +23,10 @@ const StyledAuthBackground = styled.div`
     height: 100vh;
     overflow-y: hidden;
     width: 100vw;
+    
+    .book{
+        margin: 1rem;
+    }
     &::-webkit-scrollbar {
         display: none;
     }
@@ -32,6 +36,7 @@ const StyledAuthBackground = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
     @keyframes list-left-animation { 
       ${listAnimation('left')}
@@ -72,14 +77,17 @@ const StyledAuthBackground = styled.div`
 
 
 const AuthBackground = () => {
-    const { books } = useBook();
-    if(!books){
+    const bookQuery = useBook();
+    if(!bookQuery.isSuccess){
         return <></>;
     }
 
-    const bookList = [...(books.slice(0, 12)), ...books.slice(0, 12)].map((book, i) => {
+    const bookList = [...(bookQuery.data.slice(0, 12)), ...bookQuery.data.slice(0, 12)].map((book, i) => {
         return (
-            <BookCard book={book} key={i}></BookCard>
+            <div className='book'>
+                <BookCard  book={book} key={i}></BookCard>
+            </div>
+
         )
     });
 

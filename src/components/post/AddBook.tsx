@@ -2,7 +2,7 @@
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 import styled from 'styled-components';
-import useAddBook from '../../hooks/useAddBook';
+import useAddBook from '../../hooks/book/useAddBook';
 import Rating from '../common/Rating';
 import Button from '../common/Button';
 import Input from '../common/Input';
@@ -67,7 +67,6 @@ const AddBook = () => {
             ref={editorRef}
          />
          <Button onClick={onClickSubmit}>추가하기</Button>
-         
         </StyledPostEditor>
         
     )

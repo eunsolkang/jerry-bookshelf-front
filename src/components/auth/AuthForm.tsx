@@ -19,14 +19,24 @@ const StyledAuthFrom = styled.div`
     box-sizing: border-box;
     padding: 8rem;
     .side-title{
-      font-size: 4rem;
-      color: white;
+      
+      font-weight: bold;
+      font-size: 3.8rem;
+      line-height: 78px;
+      color: rgba(255, 255, 255, 0.5);
+      span{
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .author{
+        text-align: end;
+      }
     }
     .auth-box{
       border-radius: 8px;
-      width: 320px;
+      min-width: 320px;
       background-color: white;
       padding: 2.5rem;
+      margin-left: 0.4rem;
       & > .title {
         text-align: center;
         font-size: 1.25rem;
@@ -146,9 +156,10 @@ const AuthForm = () => {
         <StyledAuthFrom>
             <div className={'cover'}>
                 <div className={'side-title'}>
-                    <div>지금 회원가입해서</div>
-                    <b>1,253</b> 개가 넘는 책들과 독후감을
-                    <div>확인하세요</div>
+                    <span>좋은책을 읽는다는 것은 <br/>과거의 가장 훌륭한 사람들과 대화하는 것이다</span>
+                    <div className='author'>
+                    -데카르트
+                    </div>
                 </div>
                 {isRegister ? registerForm : loginForm}
             </div>

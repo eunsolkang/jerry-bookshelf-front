@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { searchState, changeValue } from "../store/slice/searchSlice";
 
 export default function useSearch(){
-    const [search, setSearch] = useState<string>('');
+    const searchValue = useSelector(searchState);
+    const dispatch = useDispatch();
 
-    const onChange = (e: any) => {
-        const {value} = e.target;
+    const onChange = useCallback((e)=>{
+        const {name, value} = e.target;
+        dispatch(changeValue(value));
+    }, [dispatch])
 
-        setSearch(value);
-    }
-    return {search, onChange}
+    return {searchValue, onChange}
 }

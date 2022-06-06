@@ -1,9 +1,9 @@
 import styled, {css} from "styled-components";
 
 const StyledInput = styled.div`
-    background-color: white;
+    background-color: #f2f2f2;
     padding: .75rem 1rem;
-    border: 1px solid #dbdbdb;
+    //border: 1px solid #857979;
     border-radius : 8px;
     ${(props: any) => 
             props.fullWidth && 
@@ -12,12 +12,12 @@ const StyledInput = styled.div`
             `
     }
     input{
-        background-color: transparent;
+        background: transparent;
         width: 100%;
         border: none;
         outline: none;
         font-size: 1rem;
-        -webkit-box-shadow: 0 0 0 1000px #fff inset;
+        //-webkit-box-shadow: 0 0 0 1000px #fff inset;
     }
 `
 

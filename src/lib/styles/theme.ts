@@ -8,11 +8,14 @@ const fontSizes = {
 }
 
 const mobileFonts = {
-    listTitle: "1.3"
+    listTitle: "1.3rem"
 }
 
 const colors = {
+    black: '#000',
     primary: '#fcbe11',
+    secondary: '#e0e1e2',
+    secondaryText: 'rgba(0,0,0,.6)',
     text: '#303441',
     border: '#1e2828',
     lightenSubTitle: '#d4d4d4',

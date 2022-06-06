@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Book, RequestBook } from "../types/book";
 
 const api = axios.create({
     baseURL: `${process.env.REACT_APP_SERVER_URL}`,
@@ -20,7 +21,8 @@ const mockDataBooks = {
     
             rating: 3.3,
     
-        },    
+        }, 
+        /*   
         {
     
             backgroundColor: '#f4a9ae',
@@ -30,6 +32,7 @@ const mockDataBooks = {
             imageUrl: 'http://image.yes24.com/goods/80742923/XL',
     
         },
+        */
 
         {
     
@@ -224,9 +227,19 @@ const mockDataBooks = {
     ]
 }
 
-export const getBookList = () =>  mockDataBooks;
+export const getBooks = async(): Promise<Book[]> => {
+    const { data } = await api.get(`/book`);
 
-export const createBook = (book: any) => api.post('/book', book);
+    return data;
+}
+
+export const getBookById = async(id: string):Promise<Book> => {
+    const {data} = await api.get(`/book/${id}`);
+    return data;
+}
+export const createBook = async(book: RequestBook): Promise<void> => {
+    await api.post('/book', book);
+}
 
 export const register = (user: any) => api.post('/users/', user);
 

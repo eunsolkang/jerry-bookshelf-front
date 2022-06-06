@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import useSearch from "../../hooks/useSearch";
 import Button from "./Button";
 import Search from "./Search";
 import Wrapper from "./Wrapper";
@@ -10,35 +11,27 @@ const StyledHeader = styled.div`
     width: 100vw;
     background-color: white;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 10%);
-    
-    z-index: 100;
+    z-index: 120;
     .wrapper{
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-    a{
-        text-decoration: none;
-    }
-    .title{
-        display: flex;
-        align-items: center;
-        color: black;
-        text-decoration: none;
-        font-size: 1rem;
-        padding: 2rem;
-        word-break: keep-all;
-        cursor: pointer;
-        span{
-            //margin-left: .5rem;
-            font-family: 'Dongle', sans-serif;
-            font-size: 2rem;
+        .search{
+            flex: 1;
+            width: 100%;
         }
     }
-    .right-content{ 
-       min-width: 1rem;
-       margin-right: 2rem;
+    
+    .title{
+        text-decoration: none;
+        word-break: keep-all;
+        font-family: 'Dongle', sans-serif;
+        font-size: ${({theme})=>theme.fontSizes.title};
+        color: ${({theme})=>theme.colors.black};
+    }
+    .right-content{
+        margin-right: 1rem;
     }
     @media only screen and (max-width: 768px) {
         .title{
@@ -52,16 +45,15 @@ const StyledHeader = styled.div`
     
 `
 
-const Header = ({onChange}: any) => {
+const Header = () => {
+    const {onChange} = useSearch();
     return (
         <StyledHeader>
             <Wrapper className='wrapper'>
-                <div className='title'>
-                    <span>제리책방</span>
-                </div>
-                <Search onChange={onChange}></Search>
+                <Link className='title' to='/'>제리책방</Link>
+                <Search className='search' onChange={onChange}></Search>
                 <div className='right-content'>
-                    <Button to='/posting'>책 추가</Button>
+                    <Button to='/posting' className='add-book-button'>책 추가</Button>
                 </div>
             </Wrapper>
         </StyledHeader>

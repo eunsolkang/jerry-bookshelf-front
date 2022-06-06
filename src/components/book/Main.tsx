@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import useBook from '../../hooks/useBook';
+import useBookList from '../../hooks/book/useBookList';
+import useSearch from '../../hooks/useSearch';
 import BookCard from './BookCard';
 import BookPlaceholder from './BookPlaceholder';
 
@@ -8,7 +9,6 @@ const StyledMain = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-    height: calc(100vh - 80px);
     overflow-y: scroll;
     padding-top: 80px;
     
@@ -17,7 +17,7 @@ const StyledMain = styled.div`
         padding-top: 0rem;
         padding-bottom: .5rem;
         margin-bottom: 1rem;
-        font-size: ${({theme})=>theme.fontSizes.listTitle};;
+        font-size: ${({theme})=>theme.fontSizes.listTitle};
         font-weight: bold;
         border-bottom: 1px solid ${({theme})=>theme.colors.border};
         color: ${({theme})=>theme.colors.text};
@@ -34,7 +34,7 @@ const StyledMain = styled.div`
         column-gap: 1.5rem;
         row-gap: 1.5rem;
     }
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 1024px) {
         .list-title{
             font-size: ${({theme})=>theme.mobileFonts.listTitle};;
         }
@@ -54,23 +54,44 @@ const StyledMain = styled.div`
     }
 `
 
-const Main = ({search}: any) => {
-    const { books } = useBook();
-    if ( !books ){
-        return (
-            <StyledMain>
-                <div className='book-list-container'>
-                    <div className='list-title'>
-                            은솔님의 책방
+const Main = () => {
+    const bookQuery = useBookList();
+    const {searchValue} = useSearch();
+
+    if(!bookQuery.isSuccess){
+        if ( bookQuery.isError ){
+            return (
+                <StyledMain>
+                    <div className='book-list-container'>
+                        <div className='list-title'>
+                                은솔님의 책방
+                        </div>
+                        <div className='book-list'>
+                            책들을 불러오지 못 했습니다!
+                        </div>
                     </div>
-                    <div className='book-list'>
-                        {Array(9).fill(0).map(i=><BookPlaceholder/>)}
+                </StyledMain>
+            )
+        }
+    
+        if ( bookQuery.isLoading ){
+            return (
+                <StyledMain>
+                    <div className='book-list-container'>
+                        <div className='list-title'>
+                                은솔님의 책방
+                        </div>
+                        <div className='book-list'>
+                            {Array(9).fill(0).map(i=><BookPlaceholder/>)}
+                        </div>
                     </div>
-                </div>
-            </StyledMain>
-        )
+                </StyledMain>
+            )
+        }
+        return <></>
     }
-    const bookList = books?.filter(book => book?.name?.indexOf(search) !== -1).map((book, i) => {
+    
+    const bookList = bookQuery.data.filter(book => book?.name?.indexOf(searchValue) !== -1).map((book, i) => {
         return (
             <Link to={`/book/${book.id}`}>
                 <BookCard book={book} key={i}></BookCard>
