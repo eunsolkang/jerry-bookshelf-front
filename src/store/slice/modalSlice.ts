@@ -4,19 +4,27 @@ import { RootState } from "..";
 const name = 'modal';
 
 type stateType = {
-    title: string,
-    description: string;
-    positiveText: string;
-    negativeText: string;
     isShow: boolean;
+    contents: {
+        title: string,
+        description: string;
+        positiveText: string;
+        negativeText: string;
+        positiveAction?: () => void;
+
+    }
 }
 
 const initialState: stateType = {
     isShow: false,
-    title: '',
-    description: '',
-    positiveText: '',
-    negativeText: '',
+    contents: {
+        title: '',
+        description: '',
+        positiveText: '',
+        negativeText: '',
+        positiveAction: () => {},
+
+    }
 }
 
 export const modalSlice = createSlice({
@@ -25,12 +33,13 @@ export const modalSlice = createSlice({
     reducers: {
         openModal : (
             state,
-            action: PayloadAction<{title: string, description: string, positiveText: string, negativeText: string}>
+            action: PayloadAction<{title: string, description: string, positiveText?: string, negativeText?: string, positiveAction?: ()=>void}>
         ) =>{
-            state.title = action.payload.title;
-            state.description = action.payload.description;
-            state.positiveText = action.payload.positiveText;
-            state.negativeText = action.payload.negativeText;
+            state.contents.title = action.payload.title;
+            state.contents.description = action.payload.description;
+            state.contents.positiveText = action.payload.positiveText ?? state.contents.positiveText;
+            state.contents.negativeText = action.payload.negativeText ?? state.contents.negativeText;
+            state.contents.positiveAction = action.payload.positiveAction;
             state.isShow = true;
         },
         closeModal: (

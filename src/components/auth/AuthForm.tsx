@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Input from "../common/Input";
 import AuthBackground from "./AuthBackground";
 import Button from "../common/Button";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../hooks/auth/useAuth";
+import useLogin from "../../hooks/auth/useLogin";
 
 const StyledAuthFrom = styled.div`
   width: 100vw;
@@ -100,7 +101,7 @@ const StyledAuthFrom = styled.div`
   }
 `
 const AuthForm = () => {
-    const {onChangeInput, onClickRegister,onClickLogin, labelText, isRegister, onClickLoginStep, onClickRegisterStep} = useAuth();
+    const {onChangeInput, onClickRegister,onClickLogin, labelText, isRegister, onClickLoginStep, onClickRegisterStep, loginMutation} = useLogin();
 
     const registerForm = (
       <div className={'auth-box'}>
@@ -134,7 +135,7 @@ const AuthForm = () => {
             제리책방 로그인
         </div>
         <Input placeholder='이메일 입력' onChange={onChangeInput} name='email' labelText={labelText.email}></Input>
-        <Input placeholder='비밀번호 입력' onChange={onChangeInput} name='password' type='password' labelText={labelText.password}></Input>
+        <Input placeholder='비밀번호 입력' onChange={onChangeInput} name='password' type='password' labelText={loginMutation.isError ? "비밀번호를 확인해주세요": ""}></Input>
         <Button fullWidth onClick={onClickLogin}>로그인</Button>
         <div className='box-line'>
             <div className='line'></div>

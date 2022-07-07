@@ -3,6 +3,8 @@ import Wrapper from "../common/Wrapper";
 import Rating from "../common/Rating";
 import { Viewer } from "@toast-ui/react-editor";
 import useBookById from "../../hooks/book/useBookById";
+import useDeleteBook from "../../hooks/book/useDeleteBook";
+import { lighten } from "polished";
 
 const StyledBookDetail = styled.div<{backgroundColor: string}>`
     padding: 2rem;
@@ -20,6 +22,7 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
         display: flex;
         flex-direction: row;
         .info-row{
+            flex: 1;
             margin-left: 2rem;
             display: flex;
             flex-direction: column;
@@ -48,6 +51,19 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
                 margin-left: .25rem;
             }
         }
+        .book-handle{
+            .text-button{
+                color: rgba(255, 255, 255, 0.6);
+                cursor: pointer;
+            }
+            .text-button + .text-button{
+                margin-left: .5rem;
+            }
+            .text-button:hover{
+                font-weight: bold;
+                color: white;
+            }
+        }
     }
     .contents{
         border-radius:24px;
@@ -61,6 +77,7 @@ const StyledBookDetail = styled.div<{backgroundColor: string}>`
 
 const BookDetail = () => {
     const bookQuery = useBookById();
+    const {onDeleteBook} = useDeleteBook();
     
     if(!bookQuery.isSuccess){
         return <></>
@@ -85,6 +102,14 @@ const BookDetail = () => {
                             {bookQuery.data.author}
                         </div>
                         <Rating rating={bookQuery.data.rating}/>
+                    </div>
+                    <div className="book-handle">
+                        <span className='text-button' onClick={onDeleteBook}>
+                            수정
+                        </span>
+                        <span className='text-button' onClick={onDeleteBook}>
+                            삭제
+                        </span>
                     </div>
                 </div>
                 <div className="contents">

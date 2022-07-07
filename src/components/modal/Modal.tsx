@@ -46,18 +46,22 @@ const StyledModal = styled.div`
 `
 
 type ModalType = {
-    onCloseModal: () => void;
     title: string;
     negativeText: string;
     positiveText: string;
     description: string;
+    positiveAction?: () => void;
+    negativeAction?: () => void;
+    onCloseModal: () => void;
 }
 const Modal:React.FC<ModalType> = ({
     positiveText = '확인',
     negativeText = '취소',
     title = '타이틀 텍스트',
     description = '모달에 대한 설명입니다.',
-    onCloseModal,   
+    positiveAction,  
+    negativeAction, 
+    onCloseModal,
 }) => {
     return (
         <StyledModal>
@@ -67,16 +71,19 @@ const Modal:React.FC<ModalType> = ({
             <div className='modal'>
                 <div className='modal-header'>
                     {title}
-                    <img src='icon/ic_close.svg' onClick={onCloseModal}/>
+                    <img src='/icon/ic_close.svg' onClick={onCloseModal}/>
                 </div>
                 <div className='modal-main'>
                     {description}
                 </div>
                 <div className='modal-footer'>
-                    <Button secondary onClick={onCloseModal}>
-                        {negativeText}
-                    </Button>
-                    <Button>
+                    {
+                        negativeText &&
+                        <Button secondary onClick={negativeAction ?? onCloseModal}>
+                            {negativeText}
+                        </Button>
+                    }
+                    <Button onClick={positiveAction ?? onCloseModal}>
                         {positiveText}
                     </Button>
                 </div>

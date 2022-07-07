@@ -8,9 +8,15 @@ const ModalWrapper = () =>{
     const onCloseModal = (): void => {
         dispatch(closeModal())
     }
-    
+
     if(modal.isShow){
-        return <Modal  {...modal} onCloseModal={onCloseModal}></Modal>
+        return (
+            <Modal
+                {...modal.contents}
+                onCloseModal={onCloseModal}
+            >
+            </Modal>
+        )
     }
     return <>
         

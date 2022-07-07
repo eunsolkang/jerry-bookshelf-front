@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
-import { createBook } from "../../lib/api";
 import { openModal } from "../../store/slice/modalSlice";
 import { RequestBook } from "../../types/book";
 import { useHistory } from "react-router-dom";
+import bookApi from "../../lib/api/book";
 
 export default function useAddBook(){
     const [input, setInput] = useState<RequestBook>({
@@ -15,12 +15,11 @@ export default function useAddBook(){
         rating: 0.0,
         report: ''
     });
-    const mutation = useMutation((newBook: RequestBook) => createBook(newBook)) 
+    const mutation = useMutation((newBook: RequestBook) => bookApi.post(newBook)); 
     const dispatch = useDispatch();
     const history = useHistory();
-    
-
     const editorRef = useRef(null);
+
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
         setInput({
@@ -29,13 +28,19 @@ export default function useAddBook(){
         });
     }
 
+    const onChangeRating = (rating: number) => {
+        setInput({
+            ...input,
+            rating: rating
+        })
+    }
+
     const onClickSubmit = async() => {
         if ( input.name.trim() === '' ){
             dispatch(openModal({
                 title: '거의 다 왔습니다!',
                 description: '책 제목을 알려주세요!',
                 positiveText: '확인',
-                negativeText: '취소',
             }));
             return;
         }
@@ -44,7 +49,6 @@ export default function useAddBook(){
                 title: '거의 다 왔습니다!',
                 description: '별점을 추가해주세요!',
                 positiveText: '확인',
-                negativeText: '취소',
             }));
             return;
         }
@@ -68,13 +72,6 @@ export default function useAddBook(){
                 }));
             }
         });
-    }
-
-    const onChangeRating = (rating: number) => {
-        setInput({
-            ...input,
-            rating: rating
-        })
     }
 
     return {onChangeInput, editorRef, onClickSubmit, input, onChangeRating}

@@ -13,6 +13,7 @@ const StyledMain = styled.div`
     padding-top: 80px;
     
     .list-title{
+        min-width: 63rem;
         width: 100%;
         padding-top: 0rem;
         padding-bottom: .5rem;
@@ -36,6 +37,7 @@ const StyledMain = styled.div`
     }
     @media only screen and (max-width: 1024px) {
         .list-title{
+            min-width: 100%;
             font-size: ${({theme})=>theme.mobileFonts.listTitle};;
         }
         .book-list-container{
@@ -45,6 +47,7 @@ const StyledMain = styled.div`
             box-sizing: border-box;
         }
         .book-list{
+            
             width: 100%;
             display: grid;
             column-gap: .75rem;
