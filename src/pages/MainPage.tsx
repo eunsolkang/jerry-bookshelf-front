@@ -7,10 +7,7 @@ import { Redirect } from "react-router-dom";
 
 const MainPage = () => {
     const {checkUserAuth} = useAuth();
-    
-    if(!checkUserAuth()){
-        return <Redirect to='/login'></Redirect>
-    }
+
     
     return (
         <>

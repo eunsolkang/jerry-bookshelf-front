@@ -12,8 +12,7 @@ const authApi = {
     },
     getUserInfo: async(jwt: string):Promise<void> => {
         const {data} = await api.get('/users/info');
-
-    }
+    },
 }
 
 export default authApi;

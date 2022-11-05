@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 import { store } from './store';
 import { QueryClient, QueryClientProvider } from "react-query";
 import ModalWrapper from './components/modal/ModalWrapper';
+import IntroPage from './pages/IntroPage';
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ function App() {
               <Route exact path='/book/:id' component={BookDetailPage} ></Route>
               <Route exact path='/login' component={LoginPage} ></Route>
               <Route exact path='/posting' component={AddBookPage} ></Route>
+              <Route exact path='/intro' component={IntroPage} ></Route>
           </Switch>
           <ModalWrapper></ModalWrapper>
         </ThemeProvider>

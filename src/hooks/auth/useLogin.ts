@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useMutation } from "react-query";
 import { useHistory } from "react-router-dom";
 import authApi from "../../lib/api/auth";
-import { RequestLogin, ResponseLogin } from "../../types/auth";
+import {RequestLogin, RequestRegister, ResponseLogin} from "../../types/auth";
 
 export default function useLogin(){
     const [input, setInput] = useState({
@@ -13,11 +13,17 @@ export default function useLogin(){
     const [labelText, setLabelText] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        verifiedEmail: ''
     });
-    const [isRegister, setIsRegister] = useState<boolean>(true);
-    const loginMutation = useMutation((reqestLogin: RequestLogin) => authApi.login(reqestLogin));
+    const loginMutation = useMutation((requestLogin: RequestLogin) => authApi.login(requestLogin));
+    const registerMutation = useMutation((requestRegister: RequestRegister) => authApi.register(requestRegister));
     const history = useHistory();
+
+    const isEmail = (email: string) => {
+        const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+        return regExp.test(email);
+    }
 
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
@@ -25,14 +31,14 @@ export default function useLogin(){
             ...input,
             [name] : value
         });
+
+        console.log(input)
     }
 
     const onClickRegister = async() => {
-        const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-        const isEmail = regExp.test(input.email);
         const isPasswordValid = input.password.length >= 8;
 
-        if ( !isEmail ){
+        if ( !isEmail(input.email) ){
             setLabelText(prevState => {
                 return {
                     ...prevState,
@@ -48,14 +54,17 @@ export default function useLogin(){
                 }
             });
         }
+
+        registerMutation.mutate(input, {
+            onSuccess: (response) => {
+                history.push('?authType=email');
+            }
+        });
         
     }
 
     const onClickLogin = async() => {
-        const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-        const isEmail = regExp.test(input.email);
-
-        if ( !isEmail ){
+        if ( !isEmail(input.email) ){
             setLabelText(prevState => {
                 return {
                     ...prevState,
@@ -70,19 +79,10 @@ export default function useLogin(){
             onSuccess: (response: ResponseLogin) => {
                 localStorage.setItem('jwt', response.jwt);
                 localStorage.setItem('loggedin', 'true');
-                console.log('여기가 실행되는거임?');
                 history.push('/');
             }
         })
     }
 
-    const onClickLoginStep = () => {
-        setIsRegister(false);
-    }
-
-    const onClickRegisterStep = () => {
-        setIsRegister(true);
-    }
-
-    return {onChangeInput, onClickRegister, labelText, onClickLoginStep, onClickRegisterStep, isRegister, onClickLogin, loginMutation}
+    return {onChangeInput, onClickRegister, labelText, onClickLogin, loginMutation}
 }

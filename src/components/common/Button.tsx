@@ -6,7 +6,7 @@ import { darken, lighten } from 'polished';
 const buttonStyle = css`
     border : none;
     outline : none;
-    border-radius : 4px;
+    border-radius : 25px;
     font-size : .925rem;
     font-weight : bold;
     text-decoration: none;

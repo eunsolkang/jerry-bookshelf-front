@@ -35,6 +35,12 @@ const StyledMain = styled.div`
         column-gap: 1.5rem;
         row-gap: 1.5rem;
     }
+    .main-text{
+        height: calc(100vh - 500px);
+        ${({theme}) => theme.flex.columnCenter};
+        color: ${({theme}) => theme.colors.subTitle};
+        font-size: 1.25rem;
+    }
     @media only screen and (max-width: 1024px) {
         .list-title{
             min-width: 100%;
@@ -93,7 +99,22 @@ const Main = () => {
         }
         return <></>
     }
-    
+
+    if(bookQuery.data.length === 0){
+        return (
+            <StyledMain>
+                <div className='book-list-container'>
+                    <div className='list-title'>
+                        은솔님의 책방
+                    </div>
+                    <div className={'main-text'}>
+                        아직 추가된 책이 없습니다!
+                    </div>
+                </div>
+            </StyledMain>
+        )
+    }
+
     const bookList = bookQuery.data.filter(book => book?.name?.indexOf(searchValue) !== -1).map((book, i) => {
         return (
             <Link to={`/book/${book.id}`}>
@@ -102,6 +123,22 @@ const Main = () => {
         )
     });
 
+    if(bookList.length === 0){
+        return (
+            <StyledMain>
+                <div className='book-list-container'>
+                    <div className='list-title'>
+                        은솔님의 책방
+                    </div>
+                    <div className={'main-text'}>
+                        검색결과가 없습니다!
+                    </div>
+                </div>
+            </StyledMain>
+        )
+    }
+
+
     return (
         <StyledMain>
             <div className='book-list-container'>
@@ -109,7 +146,7 @@ const Main = () => {
                         은솔님의 책방
                 </div>
                 <div className='book-list'>
-                    {bookList}
+                    {bookList.length === 0 ? "아직 책이 없습니다": bookList}
                 </div>
             </div>
         </StyledMain>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import useBook from '../../hooks/book/useBookList';
 import BookCard from "../book/BookCard";
+import useBookList from "../../hooks/book/useMockBookList";
 
 const listAnimation = (arrow: string) => {
     let result = '';
@@ -63,7 +64,6 @@ const StyledAuthBackground = styled.div`
         justify-content: flex-start;
         animation-name: list-left-animation;
         animation-duration: 40s;
-        
     }
     .right-move{
         flex-direction: row;
@@ -77,7 +77,7 @@ const StyledAuthBackground = styled.div`
 
 
 const AuthBackground = () => {
-    const bookQuery = useBook();
+    const bookQuery = useBookList();
     if(!bookQuery.isSuccess){
         return <></>;
     }
