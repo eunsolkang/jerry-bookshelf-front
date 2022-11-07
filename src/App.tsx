@@ -10,6 +10,7 @@ import { store } from './store';
 import { QueryClient, QueryClientProvider } from "react-query";
 import ModalWrapper from './components/modal/ModalWrapper';
 import IntroPage from './pages/IntroPage';
+import SplashPage from './pages/SplashPage';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
               <Route exact path='/login' component={LoginPage} ></Route>
               <Route exact path='/posting' component={AddBookPage} ></Route>
               <Route exact path='/intro' component={IntroPage} ></Route>
+              <Route exact path='/splash' component={SplashPage} ></Route>
           </Switch>
           <ModalWrapper></ModalWrapper>
         </ThemeProvider>

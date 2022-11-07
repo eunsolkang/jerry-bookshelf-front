@@ -18,7 +18,6 @@ const buttonStyle = css`
     background-color : ${({theme})=>theme.colors.primary};
     transition: background-color .2s ease-in;
     &:hover{
-        
         background-color : ${({theme})=>darken(0.1, theme.colors.primary)};
     }
     ${(props: any) => 

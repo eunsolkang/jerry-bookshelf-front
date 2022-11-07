@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import useBookList from '../../hooks/book/useMockBookList';
 import theme from '../../lib/styles/theme';
 import Button from '../common/Button';
+import ProgressBar from '../common/ProgressBar';
 import BookCard from './BookCard';
 
 const listAnimation = (arrow: string) => {
@@ -21,26 +22,6 @@ const listAnimation = (arrow: string) => {
 }
 
 const IntroStyled = styled.div`
-    .progress-bar-container{
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        position: relative;
-        .progress-bar{
-            position: absolute;
-            border-radius: 20px;
-            width: calc(100% - 40px);
-            height: 5px;
-            background-color: #F1F1F1;
-        }
-        .progress-bar-value{
-            position: absolute;
-            border-radius: 20px;
-            width: calc(30% - 40px);
-            height: 5px;
-            background-color: ${theme.colors.primary};
-        }
-    }
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -166,7 +147,7 @@ const Intro = () => {
     const bookList = [...(bookQuery.data.slice(0, 12)), ...bookQuery.data.slice(0, 12)].map((book, i) => {
         return (
             <div className='book'>
-                <BookCard  book={book} key={i}></BookCard>
+                <BookCard book={book} key={i}></BookCard>
             </div>
         )
     });
@@ -174,14 +155,7 @@ const Intro = () => {
     
     return (
         <IntroStyled>
-            <div className='progress-bar-container'>
-                <div className='progress-bar'>
-
-                </div>
-                <div className='progress-bar-value'>
-                    
-                </div>
-            </div>
+            <ProgressBar value={30}></ProgressBar>
             <div className='contents'>
                 <div className='title'>
                     <div className='point-circle'></div>
