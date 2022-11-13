@@ -7,10 +7,11 @@ const buttonStyle = css`
     border : none;
     outline : none;
     border-radius : 25px;
-    font-size : .925rem;
+    font-size : 1rem;
     font-weight : bold;
     text-decoration: none;
-    padding : 0.55rem 1.125rem 0.65rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
     word-break: keep-all;
     white-space:nowrap;
     cursor: pointer;
@@ -23,10 +24,10 @@ const buttonStyle = css`
     ${(props: any) => 
         props.fullWidth &&
         css `
-            padding-top : 0.85rem;
-            padding-bottom : 0.85rem;
+            padding-top : 10px;
+            padding-bottom : 10px;
             width: 100%;
-            font-size : 0.925rem;
+            font-size : 1rem;
         `
     }
     ${(props: any) => 

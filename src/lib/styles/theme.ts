@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const fontSizes = {
-    title: "2rem",
-    subTitle: "1.25rem",
+    title: "20px",
+    normal: "14px",
     boxSubTitle: "0.75rem",
     listTitle: "1.5rem", 
 }
@@ -20,7 +20,12 @@ const colors = {
     border: '#1e2828',
     lightenSubTitle: '#d4d4d4',
     lightenTitle: '#fff',
-    disabled: '#ced4da'
+    disabled: '#ced4da',
+    subtitle: '#7A7A7A',
+    background: "#F5F5F5",
+    invalid: "#C21313",
+    valid: "#209D43",
+
 }
 
 const flex = {

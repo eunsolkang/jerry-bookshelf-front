@@ -9,8 +9,10 @@ import {Provider} from 'react-redux';
 import { store } from './store';
 import { QueryClient, QueryClientProvider } from "react-query";
 import ModalWrapper from './components/modal/ModalWrapper';
-import IntroPage from './pages/IntroPage';
-import SplashPage from './pages/SplashPage';
+import IntroPage from './pages/common/IntroPage';
+import SplashPage from './pages/common/SplashPage';
+import SignupInfoPage from './pages/auth/SignupInfoPage';
+import SignupHomePage from 'pages/auth/SignupHomePage';
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,9 @@ function App() {
               <Route exact path='/posting' component={AddBookPage} ></Route>
               <Route exact path='/intro' component={IntroPage} ></Route>
               <Route exact path='/splash' component={SplashPage} ></Route>
+              
+              <Route exact path='/auth/signup' component={SignupInfoPage} ></Route>
+              <Route exact path='/auth/home' component={SignupHomePage} ></Route>
           </Switch>
           <ModalWrapper></ModalWrapper>
         </ThemeProvider>

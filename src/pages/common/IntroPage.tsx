@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import useBookList from '../../hooks/book/useMockBookList';
-import theme from '../../lib/styles/theme';
-import Button from '../common/Button';
-import ProgressBar from '../common/ProgressBar';
-import BookCard from './BookCard';
+import useBookList from 'hooks/book/useMockBookList';
+import BookCard from 'components/book/BookCard';
+import ProgressBar from 'components/common/ProgressBar';
+import TextHeader from 'components/common/TextHeader';
+import TextDescription from 'components/common/TextDescription';
+import Button from 'components/common/Button';
 
 const listAnimation = (arrow: string) => {
     let result = '';
@@ -21,6 +22,7 @@ const listAnimation = (arrow: string) => {
     return result;
 }
 
+
 const IntroStyled = styled.div`
     height: 100vh;
     display: flex;
@@ -33,27 +35,8 @@ const IntroStyled = styled.div`
         justify-content: center;
         align-items: center;
     }
-    
-    .title{
-        margin-top: 20px;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        position: relative;
-        .point-circle{
-            left: 20px;
-            top: -13px;
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: ${theme.colors.primary};
-            border-radius: 100%;
-        }
-    }
-    .description{
+    .text-description{
         margin-top: 35px;
-        font-size: 14px;
-        text-align: center;
     }
     .link-box{
         margin-top: 48px;
@@ -138,7 +121,8 @@ const IntroStyled = styled.div`
     }
 
 `
-const Intro = () => {
+
+const IntroPage = () => {
     const bookQuery = useBookList();
     if(!bookQuery.isSuccess){
         return <></>;
@@ -151,23 +135,20 @@ const Intro = () => {
             </div>
         )
     });
-
-    
     return (
         <IntroStyled>
             <ProgressBar value={30}></ProgressBar>
             <div className='contents'>
-                <div className='title'>
-                    <div className='point-circle'></div>
+                <TextHeader align='center'>
                     안녕하세요 도원님,
                     <br/>
                     제리책방에 온것을 환영해요
-                </div>
-                <div className='description'>
+                </TextHeader>
+                <TextDescription align='center'>
                     내가 읽었던 소중한 책들,<br/>
                     이제는 링크 하나로 한 번에 담아서 자랑해요.<br/>
                     <span>간단한 정보</span>를 입력하고 책방을 만들어볼까요?
-                </div>
+                </TextDescription>
 
                 <div className='link-box'>
                     <img className='logo' src='icon/logo-jerrybook-main.svg' alt='logo'></img>
@@ -188,7 +169,7 @@ const Intro = () => {
                 <Button fullWidth>30초만에 책방 만들기</Button>
             </div>
         </IntroStyled>
-    )
-}
+    );
+};
 
-export default Intro
+export default IntroPage;
